@@ -1,27 +1,38 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@helper AuthorList(IEnumerable<Authors> author)
+{
+    <tbody>
+           @foreach (var item in author)
+           {
+                <tr>
+                    <td scope="row">@item.FirstName</td>
+                    <td scope="row">@item.LastName</td>
+                    <td scope="row">@Html.ActionLink("Изменить автора", "CreateAndEdit", "Author", new { id = @item.Id }, null)</td>
+                    <td scope="row">@Html.ActionLink("Удалить автора", "Delete", "Author", new { id = @item.Id }, null)</td>
+                </tr>
+            }
+     </tbody>
 }
 
+@helper CreateActionLink(string name, string view, string controller)
+{
+    @Html.ActionLink(name, view, controller)
+}
+
+@{
+    ViewBag.Title = "Index";
+}
 @model List<Authors>
-@Html.ActionLink("Создать", "CreateAndEdit", "Author")
+
+@CreateActionLink("Добавить автора", "CreateAndEdit", "Author")
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-            {
-            <tr>
-                <td scope="row">@item.FirstName</td>
-                <td scope="row">@item.LastName</td>
-                <td scope="row">@Html.ActionLink("Edit author", "CreateAndEdit", "Author", new { id = @item.Id }, null)</td>
-                <td scope="row">@Html.ActionLink("Delete author", "Delete", "Author", new { id = @item.Id }, null)</td>
-            </tr>
-        }
+    @AuthorList(Model)
 </table>
 
 

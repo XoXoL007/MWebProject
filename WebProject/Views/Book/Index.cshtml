@@ -1,30 +1,41 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-@Html.ActionLink("Создать", "CreateAndEdit", "Book")
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Pages</th>
-            <th scope="col">Price</th>
-        </tr>
-    </thead>
+﻿@helper BookList(IEnumerable<Books> book)
+{
     <tbody>
-        @foreach (var item in Model)
-            {
+        @foreach (var item in book)
+        {
             <tr>
                 <td scope="row">@item.AuthorId</td>
                 <td scope="row">@item.Title</td>
                 <td scope="row">@item.Pages</td>
                 <td scope="row">@item.Price</td>
-                <td scope="row">@Html.ActionLink("Edit Book", "CreateAndEdit", "Book", new { id = @item.Id }, null)</td>
-                <td scope="row">@Html.ActionLink("Delete Book", "Delete", "Book", new { id = @item.Id }, null)</td>
+                <td scope="row">@Html.ActionLink("Изменить книгу", "CreateAndEdit", "Book", new { id = @item.Id }, null)</td>
+                <td scope="row">@Html.ActionLink("Удалить книгу", "Delete", "Book", new { id = @item.Id }, null)</td>
             </tr>
         }
+    </tbody>
+}
+
+@helper BookActionCreate(string name, string view, string conroller)
+{
+    @Html.ActionLink(name, view, conroller)
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@BookActionCreate("Добавить книгу", "CreateAndEdit", "Book")
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Имя автора</th>
+            <th scope="col">Наименование</th>
+            <th scope="col">Кол-во страниц</th>
+            <th scope="col">Цена</th>
+        </tr>
+    </thead>
+    @BookList(Model)
 </table>
 
 
