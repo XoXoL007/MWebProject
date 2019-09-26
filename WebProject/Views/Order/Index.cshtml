@@ -1,0 +1,35 @@
+﻿@model List<WebProject.Orders>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Добавить заказ", "CreateAndEdit", "Order")
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Имя пользователя</th>
+            <th scope="col">Название книги</th>
+            <th scope="col">Дата выдачи</th>
+            <th scope="col">Предполагаемая дата возврата</th>
+            <th scope="col">Фактическая дата возврата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">@item.UserId</td>
+                <td scope="row">@item.BookId</td>
+                <td scope="row">@item.DateOfIssue</td>
+                <td scope="row">@item.EstimatedDeliveryDate</td>
+                <td scope="row">@item.DateOfCompletion</td>
+                <td scope="row">@Html.ActionLink("Изменить заказ", "CreateAndEdit", "Order", new { id = @item.Id }, null)</td>
+                <td scope="row">@Html.ActionLink("Удалить заказ", "Delete", "Order", new { id = @item.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -171,13 +171,21 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entities\Authors.cs" />
     <Compile Include="Entities\Books.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Entities\Orders.cs" />
+    <Compile Include="Entities\Users.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\CreateTableOrdersAndUsers.cs" />
+    <Compile Include="Migrations\CreateTableOrdersAndUsers.Designer.cs">
+      <DependentUpon>CreateTableOrdersAndUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CreateDatabase.cs" />
     <Compile Include="Migrations\CreateDatabase.Designer.cs">
@@ -251,6 +259,10 @@
     <Content Include="Views\Author\CreateAndEdit.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Book\CreateAndEdit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\CreateAndEdit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\CreateAndEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -264,6 +276,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\CreateTableOrdersAndUsers.resx">
+      <DependentUpon>CreateTableOrdersAndUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\CreateDatabase.resx">
       <DependentUpon>CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
