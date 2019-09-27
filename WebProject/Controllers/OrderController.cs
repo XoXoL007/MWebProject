@@ -19,6 +19,11 @@ namespace WebProject.Controllers
             return View(orders);
         }
 
+        public ActionResult HistoryUser()
+        {
+            return PartialView();
+        }
+
         public ActionResult CreateAndEdit(int? id)
         {
             List<Books> books;

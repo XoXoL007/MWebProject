@@ -221,6 +221,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\CreateAndEdit.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -260,9 +261,10 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Book\CreateAndEdit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\CreateAndEdit.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\CreateAndEdit.cshtml" />
+    <Content Include="Views\User\PartialViews\_PartialUserHistory.cshtml" />
+    <Content Include="Views\User\CreateAndEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
