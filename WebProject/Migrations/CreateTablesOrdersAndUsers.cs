@@ -3,7 +3,7 @@ namespace WebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateTableOrdersAndUsers : DbMigration
+    public partial class CreateTablesOrdersAndUsers : DbMigration
     {
         public override void Up()
         {

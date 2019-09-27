@@ -24,9 +24,9 @@
             <tr>
                 <td scope="row">@item.UserId</td>
                 <td scope="row">@item.BookId</td>
-                <td scope="row">@item.DateOfIssue</td>
-                <td scope="row">@item.EstimatedDeliveryDate</td>
-                <td scope="row">@item.DateOfCompletion</td>
+                <td scope="row">@item.DateOfIssue.ToShortDateString()</td>
+                <td scope="row">@item.EstimatedDeliveryDate.ToShortDateString()</td>
+                <td scope="row">@item.DateOfCompletion.ToShortDateString()</td>
                 <td scope="row">@Html.ActionLink("Изменить заказ", "CreateAndEdit", "Order", new { id = @item.Id }, null)</td>
                 <td scope="row">@Html.ActionLink("Удалить заказ", "Delete", "Order", new { id = @item.Id }, null)</td>
             </tr>
