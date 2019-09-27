@@ -265,6 +265,7 @@
     <Content Include="Views\Order\CreateAndEdit.cshtml" />
     <Content Include="Views\User\PartialViews\_PartialUserHistory.cshtml" />
     <Content Include="Views\User\CreateAndEdit.cshtml" />
+    <Content Include="Views\User\PartialViews\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

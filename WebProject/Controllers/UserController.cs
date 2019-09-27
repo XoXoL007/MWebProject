@@ -24,22 +24,19 @@ namespace WebProject.Controllers
             Users user;
             List<Orders> userHistory = new List<Orders>();
 
-            using (Model1 dbA = new Model1())
-            {
-                var userOrders = dbA.Orders.OrderByDescending(n => n.DateOfIssue).Select(o => o.Id).Take(5).ToList();
-                userOrders.ForEach(
-                    x =>
-                    {
-                        userHistory.Add(dbA.Orders.Where(i => i.Id == x).FirstOrDefault());
-                    });
-                ViewBag.userHistory = userHistory;
-            }
-
             using (Model1 db = new Model1())
             {
                 user = db.Users.Where(a => a.Id == id).FirstOrDefault();
                 if (user != null)
                 {
+                    var userOrders = db.Orders.OrderByDescending(n => n.DateOfIssue).Select(o => o.Id).Take(5).ToList();
+                    userOrders.ForEach(
+                        x =>
+                        {
+                            userHistory.Add(db.Orders.Where(i => i.Id == x).FirstOrDefault());
+                        });
+                    ViewBag.userHistory = userHistory;
+
                     return View(user);
                 }
                 else
@@ -47,6 +44,11 @@ namespace WebProject.Controllers
                     return View();
                 }
             }
+        }
+
+        public ActionResult History()
+        {
+            return PartialView();
         }
 
         [HttpPost]
