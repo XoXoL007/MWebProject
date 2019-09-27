@@ -21,6 +21,18 @@ namespace WebProject.Controllers
 
         public ActionResult CreateAndEdit(int? id)
         {
+            List<Books> books;
+            List<Users> users;
+
+            using (Model1 dbA = new Model1())
+            {
+                books = dbA.Books.ToList();
+                users = dbA.Users.ToList();
+
+                ViewBag.Users = new SelectList(users, "Id", "UserFirstName");
+                ViewBag.Books = new SelectList(books, "Id", "Title");
+            }
+
             Orders order;
             using (Model1 db = new Model1())
             {

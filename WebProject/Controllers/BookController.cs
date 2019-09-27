@@ -12,16 +12,26 @@ namespace WebProject.Controllers
         public ActionResult Index()
         {
             List<Books> books;
+
             using (Model1 db = new Model1())
             {
                 books = db.Books.ToList();
             }
+
             return View(books);
         }
 
         public ActionResult CreateAndEdit(int? id)
         {
+            List<Authors> authors;
+            using (Model1 dbA = new Model1())
+            {
+                authors = dbA.authors.ToList();
+                ViewBag.Authors = new SelectList(authors, "Id", "LastName");
+            }
+
             Books book;
+
             using (Model1 db = new Model1())
             {
                 book = db.Books.Where(a => a.Id == id).FirstOrDefault();
