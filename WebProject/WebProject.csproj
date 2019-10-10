@@ -183,10 +183,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\CreateTablesOrdersAndUsers.cs" />
-    <Compile Include="Migrations\CreateTablesOrdersAndUsers.Designer.cs">
-      <DependentUpon>CreateTablesOrdersAndUsers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\CreateDatabase.cs" />
     <Compile Include="Migrations\CreateDatabase.Designer.cs">
       <DependentUpon>CreateDatabase.cs</DependentUpon>
@@ -263,9 +259,8 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\CreateAndEdit.cshtml" />
-    <Content Include="Views\User\PartialViews\_PartialUserHistory.cshtml" />
     <Content Include="Views\User\CreateAndEdit.cshtml" />
-    <Content Include="Views\User\PartialViews\History.cshtml" />
+    <Content Include="Views\User\PartialViews\_userHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,9 +274,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\CreateTablesOrdersAndUsers.resx">
-      <DependentUpon>CreateTablesOrdersAndUsers.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\CreateDatabase.resx">
       <DependentUpon>CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>

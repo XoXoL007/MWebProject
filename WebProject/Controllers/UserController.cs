@@ -24,12 +24,13 @@ namespace WebProject.Controllers
             Users user;
             List<Orders> userHistory = new List<Orders>();
 
-            using (Model1 db = new Model1())
+            if (id != null)
             {
-                user = db.Users.Where(a => a.Id == id).FirstOrDefault();
-                if (user != null)
+                using (Model1 db = new Model1())
                 {
-                    var userOrders = db.Orders.OrderByDescending(n => n.DateOfIssue).Select(o => o.Id).Take(5).ToList();
+                    user = db.Users.Where(a => a.Id == id).FirstOrDefault();
+
+                    var userOrders = db.Orders.OrderByDescending(n => n.DateOfIssue).Where(u => u.UserId == user.Id).Select(o => o.Id).Take(5).ToList();
                     userOrders.ForEach(
                         x =>
                         {
@@ -37,16 +38,18 @@ namespace WebProject.Controllers
                         });
                     ViewBag.userHistory = userHistory;
 
-                    return View(user);
+                    
                 }
-                else
-                {
-                    return View();
-                }
+                return View(user);
             }
+            else
+            {
+                return View();
+            }
+
         }
 
-        public ActionResult History()
+        public ActionResult userHistory()
         {
             return PartialView();
         }
@@ -62,18 +65,15 @@ namespace WebProject.Controllers
                     oldUser.UserFirstName = user.UserFirstName;
                     oldUser.UserLastName = user.UserLastName;
                     oldUser.UserEmail = user.UserEmail;
-
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    db.Users.Add(user);
-                    db.SaveChanges();
-                    return Redirect("Index");
+                    db.Users.Add(user); 
                 }
-
+                db.SaveChanges();
             }
+            return RedirectToAction("Index", "User");
+
         }
 
         public ActionResult Delete(int id)

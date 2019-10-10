@@ -1,8 +1,4 @@
-﻿@{
-    List<Books> books = ViewBag.userHistory;
-}
-
-<h2>История заказов</h2>
+﻿<h2>История последних 5-ти заказов</h2>
 
 <table class="table table-striped">
     <thead>
@@ -15,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in @ViewBag.userHistory)
+        @foreach (var item in ViewBag.userHistory)
         {
             <tr>
                 <td scope="row">@item.UserId</td>

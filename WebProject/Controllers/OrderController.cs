@@ -11,10 +11,18 @@ namespace WebProject.Controllers
         // GET: Order
         public ActionResult Index()
         {
+            List<Books> books;
+            List<Users> users;
             List<Orders> orders;
+
             using (Model1 db = new Model1())
             {
                 orders = db.Orders.ToList();
+                books = db.Books.ToList();
+                users = db.Users.ToList();
+
+                ViewBag.Users = new SelectList(users, "Id", "UserLastName").ToList();
+                ViewBag.Books = new SelectList(books, "Id", "Title").ToList();
             }
             return View(orders);
         }
@@ -34,7 +42,7 @@ namespace WebProject.Controllers
                 books = dbA.Books.ToList();
                 users = dbA.Users.ToList();
 
-                ViewBag.Users = new SelectList(users, "Id", "UserFirstName");
+                ViewBag.Users = new SelectList(users, "Id", "UserLastName");
                 ViewBag.Books = new SelectList(books, "Id", "Title");
             }
 
