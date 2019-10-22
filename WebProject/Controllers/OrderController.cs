@@ -23,6 +23,7 @@ namespace WebProject.Controllers
 
                 ViewBag.Users = new SelectList(users, "Id", "UserLastName").ToList();
                 ViewBag.Books = new SelectList(books, "Id", "Title").ToList();
+                ViewBag.Orders = new SelectList(orders).ToList();
             }
             return View(orders);
         }

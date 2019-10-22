@@ -22,8 +22,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td scope="row">@ViewBag.Users</td>
-                <td scope="row">@ViewBag.Books</td>
+                <td scope="row">@item.UserId</td>
+                <td scope="row">@item.BookId</td>
                 <td scope="row">@item.DateOfIssue.ToShortDateString()</td>
                 <td scope="row">@item.EstimatedDeliveryDate.ToShortDateString()</td>
                 <td scope="row">@item.DateOfCompletion.ToShortDateString()</td>
